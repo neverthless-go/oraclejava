@@ -33,6 +33,24 @@ public class JdbcReviewCommentRepository implements ReviewCommentRepository{
 				rs.getString("content"),
 				rs.getInt("review_id"));
 	}
+
+	@Override
+	public ReviewComment save(ReviewComment reviewcomment) {
+		String sql = "insert into reviewcomment(id, name, content, review_id) "
+				+ "values (comments_seq.nextval, ?, ?, ?)";
+		jdbcTemplate.update(sql,
+				reviewcomment.getName(),
+				reviewcomment.getContent(),
+				reviewcomment.getReviewId());
+		return reviewcomment;
+	}
+
+	@Override
+	public void deleteByReviewId(int reviewId) {
+		String sql = "delete from reviewcomment where article_id = ?";
+		jdbcTemplate.update(sql, reviewId);
+		
+	}
 	
 	
 }

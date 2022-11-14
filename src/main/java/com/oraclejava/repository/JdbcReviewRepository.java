@@ -35,4 +35,30 @@ public class JdbcReviewRepository implements ReviewRepository {
 		review.setContent(rs.getString("content"));
 		return review;
 	}
+	
+	//글쓰기 추가하기
+		@Override
+		public Review save(Review review) {
+			String sql = "insert into review(id, product_id, name, r_date, content) "
+					+ "values(review_seq.nextval, ?, ?, ? ,?)";
+			jdbcTemplate.update(sql, review.getProductId(), review.getName(),review.getDate(), review.getContent());
+			return review;
+		}
+
+		//상세화면
+		@Override
+		public Review findOne(int id) {
+			String sql = "select id, product_id, name, r_date, content from review "
+					+ " where id=?";
+			
+			return jdbcTemplate.queryForObject(sql, this::mapRowToReview, id);
+		}
+
+		//글삭제
+		@Override
+		public void deleteById(int id) {
+			String sql = "delete from articles where id=?";
+			jdbcTemplate.update(sql, id);
+			
+		}
 }

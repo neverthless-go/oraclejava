@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>상세페이지</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+<style>
+	* {
+		margin: auto;
+		list-style: none;
+	}
+	
+	h1 {
+		color: #260;
+		margin: 20px;
+		margin-left: 40px;
+	}
+	
+	ul li {
+		padding: 5px;
+	}
+	
+	a:link, a:visited {
+		text-decoration: none;
+		color: #555;
+	}
+	
+/* 	div:nth-of-type(1)  {
+		padding: 40px;
+	} */
+	div 
+	
+	div span {
+		font-size: 17px;
+		color: #980;
+	}
+	
+	tr {
+		padding: 10px;
+	}
+	
+	th {
+		padding: 8px;
+		color: yellow;
+		background-color: #666;
+		font-weight: normal;
+	}
+	
+	td {
+		padding: 15px;
+		color: #555;
+		background-color: lightyellow;
+	}
+	
+	form {
+	margin-left: 30px;
+	}
+	
+	/* input {
+	margin-bottom: 15px;
+	} */
+</style>
+</head>
+<body>
+	<h1>상세페이지</h1>
+	<!-- 테이블로 하는방 -->
+	<!-- <table border="1">
+		<tr>
+			<th>ID</th>
+			<th>NAME</th>
+			<th>CONTENT</th>
+		</tr>
+		<tr th:each="a : ${article}">
+			<td th:text="${a.id}"></td>
+			<td th:text="${a.name}"></td>
+			<td th:text="${a.content}"></td>
+		</tr>  
+	 </table>   -->
+	 
+	 <!-- 리스트 형태로 하는방법 -->
+	  <ul th:each="r : ${review}">
+		  <li> ID: <span th:text="${r.id}"></span></li>
+		  <li> NAME: <span th:text="${r.name}"></span> </li>
+		  <li> CONTENT: <span th:text="${r.content}"></span> </li>
+	 </ul>  
+	 
+	 <form
+	 	th:action="@{/board/deletereview}"
+	 	th:object="${reviewForm}"
+	 	method="post">
+	 	<input type="hidden" name="id" th:value="${review.id}">
+	 	<input type="submit" value="삭제">
+	 </form>
+	 <br>
+	 <div th:each="recomment : ${review.reviewcommentList}">
+	 	이름: <span th:text="${recomment.name}">강호동</span> <br>
+	 	내용: 
+	 	<pre><span th:text="${recomment.content}">행님아~~ 댓글내용 입니더 이게 무슨 129</span></pre>
+	</div>
+	 
+	 <form 
+	 	th:action="@{/board/comment_ok}"
+	 	th:object="${reviewcommentForm}"
+	 	method="post">
+	 	<input type="hidden" name="reviewId"
+	 		th:value="${review.id}">
+	 	이름: <br>
+	 	<input type="text" name="name" 
+	 		th:field="*{name}">
+ 		<div th:errors="*{name}" class="error-messages">에러발생!</div><br>
+ 		댓글내용<br>
+ 		<textarea name="content" 
+ 			th:field="*{content}"
+ 			rows="5" 
+ 			cols="25"></textarea> <br>
+ 		<div th:errors="*{content}" class="error-messages">에러발생!</div><br>
+		<input type="submit" value="쓰기">
+	 
+	 </form>
+	 
+	 <!-- 선생님 방법 -->
+	<!-- <div th:object="${article}"> 
+		id: <span th:text="*{id}"></span> <br>
+		name: <span th:text="*{name}"></span> <br>
+		<p th:text="*{content}"></p>
+	</div> -->
+</body>
+</html>
