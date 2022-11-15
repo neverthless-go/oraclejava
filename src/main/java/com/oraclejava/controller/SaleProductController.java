@@ -11,24 +11,23 @@ import com.oraclejava.domain.Product;
 import com.oraclejava.repository.ProductRepository;
 
 @Controller
-public class ProductController {
-
+public class SaleProductController {
 	private ProductRepository productRepository;
-
-	// 의존성주입(D.I)
-	public ProductController(ProductRepository productRepository) {
+	
+	
+	public SaleProductController(ProductRepository productRepository) {
 		super();
 		this.productRepository = productRepository;
 	}
 
-	@RequestMapping("/product")
-	public String productList(@RequestParam(value = "keyword", required = false) String keyword, Model model) {
+
+	@RequestMapping("/saleProduct")
+	public String saleProductList(@RequestParam(value = "keyword", required = false) String keyword, Model model) {
 		if (keyword == null)
 			keyword = "";// 키워드가 없으면 전체 검색
 		List<Product> list = productRepository.search(keyword);
 		model.addAttribute("list", list);
-		model.addAttribute("contents", "product :: productView");
+		model.addAttribute("contents", "sale-product :: saleView");
 		return "index";
 	}
-
 }
