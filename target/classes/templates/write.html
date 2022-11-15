@@ -11,8 +11,35 @@
 	<form th:action="@{'/board/write_ok'}"
 		  th:object="${reviewForm}"
 		  method="post">
+		  제품: 
+		  <select name="cosId" th:field="*{cosId}">
+		  	<option value="">제품선택</option>
+		  	<option value="1">제품1</option>
+		  	<option value="2">제품2</option>
+		  	<option value="3">제품3</option>
+		  	<option value="4">제품4</option>
+		  	<option value="5">제품5</option>
+		  	<option value="6">제품6</option>
+		  	<option value="7">제품7</option>
+		  	<option value="8">제품8</option>
+		  	<option value="9">제품9</option>
+		  	<option value="10">제품10</option>
+		  	<option value="11">제품11</option>
+		  	<option value="12">제품12</option>
+		  	<option value="13">제품13</option>
+		  	<option value="14">제품14</option>
+		  	<option value="15">제품15</option>
+		  	<option value="16">제품16</option>
+		  	<option value="17">제품17</option>
+		  	<option value="18">제품18</option>
+		  	<option value="19">제품19</option>
+		  	<option value="20">제품20</option>
+		  </select> 
+		  
+		  <!-- <input type="text" name="cosId" th:field="*{cosId}"> --> <br>
 		  글쓴이: <input type="text" name="name" th:field="*{name}"> <br>
-		  <div th:errors="*{name}" class="error-messages"></div>
+		  <div th:errors="*{name}" class="error-messages"></div> 
+		  날짜: <input type="date" name="r_date" th:field="*{r_date}">
 		  글내용:
 		  	<textarea name="content" th:field="*{content}"
 		  		rows="5" cols="25"></textarea> <br>

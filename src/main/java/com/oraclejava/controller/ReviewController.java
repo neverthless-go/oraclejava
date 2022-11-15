@@ -79,12 +79,16 @@ public class ReviewController {
 			Model model) {
 		System.out.println("write_ok");
 		
+		System.out.println(reviewForm);
+		
 		if (result.hasErrors()) {
 			return write(model);
 		}
 		
 		Review review = new Review();
 		BeanUtils.copyProperties(reviewForm, review);
+		
+		System.out.println(review);
 		reviewRepository.save(review);
 		return "redirect:/board";
 	}

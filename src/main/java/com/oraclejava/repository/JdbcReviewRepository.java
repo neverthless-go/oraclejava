@@ -29,9 +29,9 @@ public class JdbcReviewRepository implements ReviewRepository {
 		
 		Review review = new Review();
 		review.setId(rs.getInt("id"));
-		review.setProductId(rs.getInt("cos_id"));
+		review.setCosId(rs.getInt("cos_id"));
 		review.setName(rs.getString("name"));
-		review.setDate(rs.getString("r_date"));
+		review.setR_date(rs.getString("r_date"));
 		review.setContent(rs.getString("content"));
 		return review;
 	}
@@ -40,8 +40,8 @@ public class JdbcReviewRepository implements ReviewRepository {
 		@Override
 		public Review save(Review review) {
 			String sql = "insert into review(id, cos_id, name, r_date, content) "
-					+ "values(review_seq.nextval, ?, ?, ? ,?)";
-			jdbcTemplate.update(sql, review.getcosId(), review.getName(),review.getDate(), review.getContent());
+					+ "values(review_seq.nextval, ?, ?, TO_DATE(?, 'YYYY-MM-DD') ,?)";
+			jdbcTemplate.update(sql, review.getCosId(), review.getName(),review.getR_date(), review.getContent());
 			return review;
 		}
 
