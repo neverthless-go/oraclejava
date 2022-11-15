@@ -64,13 +64,15 @@ public class ReviewController {
 		review.setReviewCommentList(reviewcommentList);
 		
 		model.addAttribute("review", review);
-		return "show";
+		model.addAttribute("contents", "show :: showView");
+		return "index";
 	}
 	
 	//게시글 쓰기
 	@RequestMapping(value="/write", method=RequestMethod.GET)
 	public String write(Model model) {
-		return "write";
+		model.addAttribute("contents", "write :: writeView");
+		return "index";
 	}
 	
 	@RequestMapping(value="/write_ok", method=RequestMethod.POST)
@@ -114,7 +116,8 @@ public class ReviewController {
 		reviewRepository.findAll().forEach(e -> review.add(e));
 		
 		model.addAttribute("review", review);
-		return "board";
+		model.addAttribute("contents", "board :: boardView");
+		return "index";
 	}
 	
 	
