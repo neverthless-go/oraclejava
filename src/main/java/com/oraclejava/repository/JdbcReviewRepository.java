@@ -29,7 +29,7 @@ public class JdbcReviewRepository implements ReviewRepository {
 		
 		Review review = new Review();
 		review.setId(rs.getInt("id"));
-		review.setProductId(rs.getInt("product_id"));
+		review.setProductId(rs.getInt("cos_id"));
 		review.setName(rs.getString("name"));
 		review.setDate(rs.getString("r_date"));
 		review.setContent(rs.getString("content"));
@@ -39,16 +39,16 @@ public class JdbcReviewRepository implements ReviewRepository {
 	//글쓰기 추가하기
 		@Override
 		public Review save(Review review) {
-			String sql = "insert into review(id, product_id, name, r_date, content) "
+			String sql = "insert into review(id, cos_id, name, r_date, content) "
 					+ "values(review_seq.nextval, ?, ?, ? ,?)";
-			jdbcTemplate.update(sql, review.getProductId(), review.getName(),review.getDate(), review.getContent());
+			jdbcTemplate.update(sql, review.getcosId(), review.getName(),review.getDate(), review.getContent());
 			return review;
 		}
 
 		//상세화면
 		@Override
 		public Review findOne(int id) {
-			String sql = "select id, product_id, name, r_date, content from review "
+			String sql = "select id, cos_id, name, r_date, content from review "
 					+ " where id=?";
 			
 			return jdbcTemplate.queryForObject(sql, this::mapRowToReview, id);
@@ -57,7 +57,7 @@ public class JdbcReviewRepository implements ReviewRepository {
 		//글삭제
 		@Override
 		public void deleteById(int id) {
-			String sql = "delete from articles where id=?";
+			String sql = "delete from review where id=?";
 			jdbcTemplate.update(sql, id);
 			
 		}

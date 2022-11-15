@@ -6,18 +6,18 @@ import java.util.List;
 public class Review implements Serializable{
 
 	private Integer id;
-	private Integer productId;
+	private Integer cosId;
 	private String name;
 	private String date;
 	private String content;
 	private List<ReviewComment> reviewCommentList;
 	
 	
-	public Review(Integer id, Integer productId, String name, String date, String content,
+	public Review(Integer id, Integer cosId, String name, String date, String content,
 			List<ReviewComment> reviewCommentList) {
 		super();
 		this.id = id;
-		this.productId = productId;
+		this.cosId = cosId;
 		this.name = name;
 		this.date = date;
 		this.content = content;
@@ -34,11 +34,11 @@ public class Review implements Serializable{
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public Integer getProductId() {
-		return productId;
+	public Integer getcosId() {
+		return cosId;
 	}
-	public void setProductId(Integer productId) {
-		this.productId = productId;
+	public void setProductId(Integer cosId) {
+		this.cosId = cosId;
 	}
 	public String getName() {
 		return name;
