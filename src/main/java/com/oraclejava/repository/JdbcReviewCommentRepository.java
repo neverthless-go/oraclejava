@@ -37,11 +37,11 @@ public class JdbcReviewCommentRepository implements ReviewCommentRepository{
 	@Override
 	public ReviewComment save(ReviewComment reviewcomment) {
 		String sql = "insert into reviewcomment(id, name, content, review_id) "
-				+ "values (reviewcomments_seq.nextval, ?, ?, ?)";
+				+ "values (reviewcomment_seq.nextval, ?, ?, ?)";
 		jdbcTemplate.update(sql,
 				reviewcomment.getName(),
 				reviewcomment.getContent(),
-				reviewcomment.getReviewId());
+				reviewcomment.getReview_id());
 		return reviewcomment;
 	}
 

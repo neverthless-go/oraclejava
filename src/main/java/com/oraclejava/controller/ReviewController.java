@@ -64,8 +64,8 @@ public class ReviewController {
 		review.setReviewCommentList(reviewCommentList);
 		
 		model.addAttribute("review", review);
-//		model.addAttribute("contents", "show :: showView");
-		return "show";
+		model.addAttribute("contents", "show :: showView");
+		return "index";
 	}
 	
 	//게시글 쓰기
@@ -99,13 +99,19 @@ public class ReviewController {
 	@RequestMapping(value="/comment_ok", method=RequestMethod.POST)
 	public String insertreviewComment(@Validated ReviewCommentForm reviewcommentForm,
 			BindingResult result, Model model) {
+		
+		
+		
 		if (result.hasErrors()) {
 			return showContent(reviewcommentForm.getReview_id(), model);
 		}
 		ReviewComment reviewcomment = new ReviewComment();
 		BeanUtils.copyProperties(reviewcommentForm, reviewcomment);
 		reviewCommentRepository.save(reviewcomment);
-		return "redirect:/board/content?id=" + reviewcomment.getReviewId();
+		
+		System.out.println(reviewcommentForm);
+		
+		return "redirect:/board/content?id=" + reviewcomment.getReview_id();
 	}
 	
 	//글 목록보기

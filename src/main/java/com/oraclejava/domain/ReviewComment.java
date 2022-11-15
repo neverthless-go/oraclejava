@@ -5,21 +5,19 @@ public class ReviewComment {
 	private Integer id;
 	private String name;
 	private String content;
-	private Integer reviewId;
+	private Integer review_id;
 	
 	
-	public ReviewComment(Integer id, String name, String content, Integer reviewId) {
+	public ReviewComment(Integer id, String name, String content, Integer review_id) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.content = content;
-		this.reviewId = reviewId;
+		this.review_id = review_id;
 	}
-	
 	public ReviewComment() {
 		super();
 	}
-	
 	public Integer getId() {
 		return id;
 	}
@@ -38,12 +36,15 @@ public class ReviewComment {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public Integer getReviewId() {
-		return reviewId;
+	public Integer getReview_id() {
+		return review_id;
 	}
-	public void setReviewId(Integer reviewId) {
-		this.reviewId = reviewId;
+	public void setReview_id(Integer review_id) {
+		this.review_id = review_id;
 	}
+	
+	
+	
 	
 	
 }
