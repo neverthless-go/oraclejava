@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>세일상품</title>
+</head>
+<body>
+
+<div th:fragment="saleView">
+	<h3>원하시는 상품을 검색해 주세요</h3>
+		<form th:action="@{/product}" method="post">
+			<input type="text" name="keyword"> <input type="submit"
+				value="검색">
+		</form>
+		<hr>
+		<br><br>
+		
+			<a th:href="@{/saleProduct}">세일상품</a>&nbsp;&nbsp;&nbsp;
+			<a th:href="@{/bestProduct}">베스트상품</a>&nbsp;&nbsp;&nbsp;
+			<a th:href="@{/newProduct}">신상품</a>
+		
+		<br><br>
+		
+
+		<table style="border-collapse: separate; border-spacing: 10px;">
+			<tr th:each="product : ${list}" th:if="${product.price < 30000}">
+				<td>상품[[${product.id}]]</td>
+				<td><img th:src="@{'/img/'+ ${product.id} + '.jpg'}"
+					height="64"></td>
+				<td>[[${product.name}]]</td>
+				<td>[[${product.price}]]원</td>
+				<td><a th:href="@{'/cartAdd?id=' + ${product.id}}">장바구니에 추가</a></td>
+			</tr>
+		</table>	
+			
+	
+		
+		
+		
+		
+		
+		
+	세일입니다   세일  가격 30000이하~
+	베스트 5만원 이상~
+	신상품  이름에 New들어간? 조건문생성
+</div>
+
+
+</body>
+</html>
