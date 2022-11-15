@@ -58,10 +58,10 @@ public class ReviewController {
 	
 		
 		//댓글 목록 가져오기
-		List<ReviewComment> reviewcommentList = new ArrayList<>();
-		reviewCommentRepository.findByReviewId(id).forEach(c -> reviewcommentList.add(c));
+		List<ReviewComment> reviewCommentList = new ArrayList<>();
+		reviewCommentRepository.findByReviewId(id).forEach(c -> reviewCommentList.add(c));
 		
-		review.setReviewCommentList(reviewcommentList);
+		review.setReviewCommentList(reviewCommentList);
 		
 		model.addAttribute("review", review);
 //		model.addAttribute("contents", "show :: showView");

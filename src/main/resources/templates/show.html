@@ -93,15 +93,15 @@
 		 	<input type="submit" value="삭제">
 		 </form>
 		 <br>
-		 <div th:each="recomment : ${review.reviewcommentList}">
-		 	이름: <span th:text="${recomment.name}">강호동</span> <br>
+		 <div th:each="reviewcomment : ${review.reviewCommentList}">
+		 	이름: <span th:text="${reviewcomment.name}">강호동</span> <br>
 		 	내용: 
-		 	<pre><span th:text="${recomment.content}">행님아~~ 댓글내용 입니더 이게 무슨 129</span></pre>
+		 	<pre><span th:text="${reviewcomment.content}">행님아~~ 댓글내용 입니더 이게 무슨 129</span></pre>
 		</div>
 		 
 		 <form 
 		 	th:action="@{/board/comment_ok}"
-		 	th:object="${reviewcommentForm}"
+		 	th:object="${reviewCommentForm}"
 		 	method="post">
 		 	<input type="hidden" name="reviewId"
 		 		th:value="${review.id}">

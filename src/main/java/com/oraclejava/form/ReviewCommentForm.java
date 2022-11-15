@@ -15,6 +15,9 @@ public class ReviewCommentForm {
 	@Size(min=1, max=100, message="이름은 1자이상 입력해주세요")
 	private String content;
 	private Integer review_id;
+	
+	
+	
 	public Integer getId() {
 		return id;
 	}
@@ -39,6 +42,9 @@ public class ReviewCommentForm {
 	public void setReview_id(Integer review_id) {
 		this.review_id = review_id;
 	}
+	
+	
+	
 	
 	
 	
