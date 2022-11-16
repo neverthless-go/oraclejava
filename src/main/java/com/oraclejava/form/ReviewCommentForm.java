@@ -11,8 +11,8 @@ public class ReviewCommentForm {
 	@Size(min=1, max=100, message="이름은 1자이상 입력해주세요")
 	private String name;
 	
-	@NotNull(message="이름을 입력해주세요")
-	@Size(min=1, max=100, message="이름은 1자이상 입력해주세요")
+	@NotNull(message="내용을 입력해주세요")
+	@Size(min=1, max=100, message="내용은 1자이상 입력해주세요")
 	private String content;
 	private Integer review_id;
 	

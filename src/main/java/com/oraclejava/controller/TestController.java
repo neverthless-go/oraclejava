@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class TestController {
 	
 
-	@RequestMapping()
+	@RequestMapping("/")
 	public String text(Model model) {
 
 		model.addAttribute("key", model);

@@ -29,6 +29,7 @@ public class PurchaseController {
 		if( (name.isEmpty() || address.isEmpty()) ) {
 			model.addAttribute("contents", "purchase-in :: error-empty");
 			return "index";
+			
 		}
 		
 		// 카트를 가져오기

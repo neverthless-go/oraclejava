@@ -13,14 +13,17 @@
 				value="검색">
 		</form>
 		<hr>
-		<br><br>
+		<br>
+		
+		<div>
+		<img  height="300px" align="middle"  th:src="@{'/img/'+saleMain.jpg}" alt="메인이미지"></img>
+		</div>
 		
 			<a th:href="@{/saleProduct}">세일상품</a>&nbsp;&nbsp;&nbsp;
 			<a th:href="@{/bestProduct}">베스트상품</a>&nbsp;&nbsp;&nbsp;
 			<a th:href="@{/newProduct}">신상품</a>
 		
 		<br><br>
-		
 
 		<table style="border-collapse: separate; border-spacing: 10px;">
 			<tr th:each="product : ${list}" th:if="${product.price < 30000}">
@@ -32,17 +35,7 @@
 				<td><a th:href="@{'/cartAdd?id=' + ${product.id}}">장바구니에 추가</a></td>
 			</tr>
 		</table>	
-			
-	
-		
-		
-		
-		
-		
-		
-	세일입니다   세일  가격 30000이하~
-	베스트 5만원 이상~
-	신상품  이름에 New들어간? 조건문생성
+
 </div>
 
 

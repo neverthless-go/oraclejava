@@ -6,11 +6,15 @@ import javax.validation.constraints.Size;
 public class ReviewForm {
 
 	private Integer id;
+	
+	@NotNull(message="제품번호를 선택해주세요")
 	private Integer cosId;
 	
 	@NotNull(message="글쓴이 이름을 입력해 주세요")
 	@Size(min=1, max=100, message="글쓴이 이름은 1자이상 100자 이내로 입력해 주세요")
 	private String name;
+	
+	@NotNull(message="해당 날짜를 선택해주세요")
 	private String r_date;
 	
 	@NotNull(message="글쓴이 이름을 입력해 주세요")

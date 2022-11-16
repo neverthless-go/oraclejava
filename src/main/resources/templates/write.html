@@ -3,11 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" th:href="@{'/css/style.css'}">
+<link rel="stylesheet" type="text/css" th:href="@{'/css/board.css'}">
 </head>
 <body>
 	<div th:fragment="writeView">
 		<h1>글쓰기</h1>
+		<hr class="deco">
 		<form th:action="@{'/board/write_ok'}"
 			  th:object="${reviewForm}"
 			  method="post">
@@ -35,16 +36,17 @@
 			  	<option value="19">제품19</option>
 			  	<option value="20">제품20</option>
 			  </select> 
-			  
-			  <!-- <input type="text" name="cosId" th:field="*{cosId}"> --> <br>
-			  글쓴이: <input type="text" name="name" th:field="*{name}"> <br>
+			  <div th:errors="*{cosId}" class="error-messages"></div> <br>
+			  <!-- <input type="text" name="cosId" th:field="*{cosId}"> --> 
+			  작성자: <input type="text" name="name" th:field="*{name}" placeholder="이름" class="name"> <br>
 			  <div th:errors="*{name}" class="error-messages"></div> 
-			  날짜: <input type="date" name="r_date" th:field="*{r_date}"> <br>
-			  글내용:
+			  구매날짜: <input type="date" name="r_date" th:field="*{r_date}" class="date"> <br>
+			  <div th:errors="*{r_date}" class="error-messages"></div>
+			 
 			  	<textarea name="content" th:field="*{content}"
-			  		rows="5" cols="25"></textarea> <br>
+			  		rows="5" cols="25" placeholder="리뷰내용" class="content"></textarea> <br>
 			 <div th:errors="*{content}" class="error-messages"></div>
-			 <input type="submit" value="등록">
+			 <input type="submit" value="등록" class="button">
 			 
 		</form>
 	</div>	

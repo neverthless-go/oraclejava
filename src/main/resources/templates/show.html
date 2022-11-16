@@ -3,63 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>상세페이지</title>
-<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
-<style>
-	* {
-		margin: auto;
-		list-style: none;
-	}
-	
-	h1 {
-		color: #260;
-		margin: 20px;
-		margin-left: 40px;
-	}
-	
-	ul li {
-		padding: 5px;
-	}
-	
-	a:link, a:visited {
-		text-decoration: none;
-		color: #555;
-	}
-	
-/* 	div:nth-of-type(1)  {
-		padding: 40px;
-	} */
-	div 
-	
-	div span {
-		font-size: 17px;
-		color: #980;
-	}
-	
-	tr {
-		padding: 10px;
-	}
-	
-	th {
-		padding: 8px;
-		color: yellow;
-		background-color: #666;
-		font-weight: normal;
-	}
-	
-	td {
-		padding: 15px;
-		color: #555;
-		background-color: lightyellow;
-	}
-	
-	form {
-	margin-left: 30px;
-	}
-	
-	/* input {
-	margin-bottom: 15px;
-	} */
-</style>
+<link rel="stylesheet" type="text/css" th:href="@{/css/board.css}">
 </head>
 <body>
 	<div th:fragment="showView">
@@ -79,10 +23,15 @@
 		 </table>   -->
 		 
 		 <!-- 리스트 형태로 하는방법 -->
+		 <hr class="deco">
+		 <input type="submit" value="글삭제" class="d_button">
 		  <ul th:each="r : ${review}">
-			  <li> ID: <span th:text="${r.id}"></span></li>
-			  <li> NAME: <span th:text="${r.name}"></span> </li>
-			  <li> CONTENT: <span th:text="${r.content}"></span> </li>
+			  <li> 글번호: <span th:text="${r.id}"></span></li>
+			  <li> 제품명: <span th:text="${r.cosId}"></span>번 제품 </li>
+			  <li><img th:src="@{'/img/' + ${r.cosId} + '.jpg'}"
+					height="130"></li>
+			  <li> 작성자: <span th:text="${r.name}"></span> </li>
+			  <li> 글내용: <span th:text="${r.content}"></span> </li>
 		 </ul>  
 		 
 		 <form
@@ -90,32 +39,31 @@
 		 	th:object="${reviewForm}"
 		 	method="post">
 		 	<input type="hidden" name="id" th:value="${review.id}">
-		 	<input type="submit" value="삭제">
 		 </form>
 		 <br>
-		 <div th:each="reviewcomment : ${review.reviewCommentList}">
-		 	이름: <span th:text="${reviewcomment.name}">강호동</span> <br>
-		 	내용: 
-		 	<pre><span th:text="${reviewcomment.content}">행님아~~ 댓글내용 입니더 이게 무슨 129</span></pre>
+		 <div th:each="reviewcomment : ${review.reviewCommentList}" class="rc_comment">
+		 <pre>
+		 	댓글: <span th:text="${reviewcomment.name}">강호동</span> <br>
+		 	내용: <span th:text="${reviewcomment.content}">행님아~~ 댓글내용 입니더 이게 무슨 129</span></pre>
 		</div>
-		 
+		 <hr class="s_hr">
 		 <form 
 		 	th:action="@{/board/comment_ok}"
 		 	th:object="${reviewCommentForm}"
 		 	method="post">
+		 	<div th:errors="*{name}" class="error-messages">에러발생!</div>
 		 	<input type="hidden" name="review_id"
 		 		th:value="${review.id}">
-		 	이름: <br>
-		 	<input type="text" name="name" 
-		 		th:field="*{name}">
-	 		<div th:errors="*{name}" class="error-messages">에러발생!</div><br>
-	 		댓글내용<br>
+		 	<span class="rc">작성자: </span><input type="text" name="name" 
+		 		th:field="*{name}" placeholder="이름" class="rc_write">
+	 		
+	 		<div th:errors="*{content}" class="error-messages">에러발생!</div>
 	 		<textarea name="content" 
 	 			th:field="*{content}"
 	 			rows="5" 
-	 			cols="25"></textarea> <br>
-	 		<div th:errors="*{content}" class="error-messages">에러발생!</div><br>
-			<input type="submit" value="쓰기">
+	 			cols="25" placeholder="댓글내용" class="rc_content"></textarea> <br>
+	 		
+			<input type="submit" value="댓글쓰기" class="rc_button">
 		 
 		 </form>
 		 
