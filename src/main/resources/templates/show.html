@@ -44,7 +44,8 @@
 		 <div th:each="reviewcomment : ${review.reviewCommentList}" class="rc_comment">
 		 <pre>
 		 	댓글: <span th:text="${reviewcomment.name}">강호동</span> <br>
-		 	내용: <span th:text="${reviewcomment.content}">행님아~~ 댓글내용 입니더 이게 무슨 129</span></pre>
+		 	내용: <span th:text="${reviewcomment.content}">행님아~~ 댓글내용 입니더 이게 무슨 129</span>
+	 	</pre>
 		</div>
 		 <hr class="s_hr">
 		 <form 
@@ -74,5 +75,6 @@
 			<p th:text="*{content}"></p>
 		</div> -->
 	</div>	
+
 </body>
 </html>
