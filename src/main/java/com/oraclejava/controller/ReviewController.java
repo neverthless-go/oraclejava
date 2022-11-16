@@ -46,7 +46,7 @@ public class ReviewController {
 	
 	//리뷰댓글초기화
 	@ModelAttribute
-	public ReviewCommentForm setCommentForm() {
+	public ReviewCommentForm setReviewCommentForm() {
 		return new ReviewCommentForm();
 	}
 	
