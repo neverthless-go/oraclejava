@@ -24,7 +24,14 @@
 		 
 		 <!-- 리스트 형태로 하는방법 -->
 		 <hr class="deco">
+		 <form
+		 	th:action="@{/board/deletereview}"
+		 	th:object="${reviewForm}"
+		 	method="post"
+		 	class="d_button">
+ 		 <input type="hidden" name="id" th:value="${review.id}">
 		 <input type="submit" value="글삭제" class="d_button">
+		 </form>
 		  <ul th:each="r : ${review}">
 			  <li> 글번호: <span th:text="${r.id}"></span></li>
 			  <li> 제품명: <span th:text="${r.cosId}"></span>번 제품 </li>
@@ -34,12 +41,7 @@
 			  <li> 글내용: <span th:text="${r.content}"></span> </li>
 		 </ul>  
 		 
-		 <form
-		 	th:action="@{/board/deletereview}"
-		 	th:object="${reviewForm}"
-		 	method="post">
-		 	<input type="hidden" name="id" th:value="${review.id}">
-		 </form>
+		 
 		 <br>
 		 <div th:each="reviewcomment : ${review.reviewCommentList}" class="rc_comment">
 		 <pre>

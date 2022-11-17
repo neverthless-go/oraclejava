@@ -1,7 +1,10 @@
 package com.oraclejava.repository;
 
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -28,10 +31,11 @@ public class JdbcReviewRepository implements ReviewRepository {
 	throws SQLException {
 		
 		Review review = new Review();
+		
 		review.setId(rs.getInt("id"));
 		review.setCosId(rs.getInt("cos_id"));
 		review.setName(rs.getString("name"));
-		review.setR_date(rs.getString("r_date"));
+		review.setR_date(rs.getDate("r_date"));
 		review.setContent(rs.getString("content"));
 		return review;
 	}
@@ -39,9 +43,16 @@ public class JdbcReviewRepository implements ReviewRepository {
 	//글쓰기 추가하기
 		@Override
 		public Review save(Review review) {
+			System.out.println(review);
+			
 			String sql = "insert into review(id, cos_id, name, r_date, content) "
-					+ "values(review_seq.nextval, ?, ?, TO_DATE(?, 'YYYY-MM-DD') ,?)";
-			jdbcTemplate.update(sql, review.getCosId(), review.getName(),review.getR_date(), review.getContent());
+					+ "values(review_seq.nextval, ?, ?, TO_DATE(?,'YYYY-MM-DD') ,?)";
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); 
+			 
+			String s = sdf.format(review.getR_date());
+			
+			jdbcTemplate.update(sql, review.getCosId(), review.getName(),s, review.getContent());
 			return review;
 		}
 

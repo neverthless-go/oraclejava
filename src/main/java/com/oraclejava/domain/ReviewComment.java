@@ -15,9 +15,14 @@ public class ReviewComment {
 		this.content = content;
 		this.review_id = review_id;
 	}
+	
+	
+	
 	public ReviewComment() {
 		super();
 	}
+	
+	
 	public Integer getId() {
 		return id;
 	}

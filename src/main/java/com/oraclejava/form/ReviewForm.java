@@ -6,8 +6,10 @@ import java.util.Date;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.validation.groups.ConvertGroup;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 public class ReviewForm {
 
@@ -21,7 +23,7 @@ public class ReviewForm {
 	private String name;
 	
 	@NotNull(message="해당 날짜를 선택해주세요")
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date r_date;
 	
 	@NotNull(message="글쓴이 이름을 입력해 주세요")
@@ -68,7 +70,6 @@ public class ReviewForm {
 		this.content = content;
 	}
 
-	
 	
 	
 	

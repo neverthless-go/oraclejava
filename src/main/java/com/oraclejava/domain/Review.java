@@ -1,19 +1,21 @@
 package com.oraclejava.domain;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
+
 
 public class Review implements Serializable{
 
 	private Integer id;
 	private Integer cosId;
 	private String name;
-	private String r_date;
+	private Date r_date;
 	private String content;
 	private List<ReviewComment> reviewCommentList;
 	
 	
-	public Review(Integer id, Integer cosId, String name, String r_date, String content,
+	public Review(Integer id, Integer cosId, String name, Date r_date, String content,
 			List<ReviewComment> reviewCommentList) {
 		super();
 		this.id = id;
@@ -23,10 +25,13 @@ public class Review implements Serializable{
 		this.content = content;
 		this.reviewCommentList = reviewCommentList;
 	}
+
+
 	public Review() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
+	
+	
 	public Integer getId() {
 		return id;
 	}
@@ -45,10 +50,10 @@ public class Review implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getR_date() {
+	public Date getR_date() {
 		return r_date;
 	}
-	public void setR_date(String r_date) {
+	public void setR_date(Date r_date) {
 		this.r_date = r_date;
 	}
 	public String getContent() {
@@ -63,6 +68,8 @@ public class Review implements Serializable{
 	public void setReviewCommentList(List<ReviewComment> reviewCommentList) {
 		this.reviewCommentList = reviewCommentList;
 	}
+
+
 	@Override
 	public String toString() {
 		return "Review [id=" + id + ", cosId=" + cosId + ", name=" + name + ", r_date=" + r_date + ", content="
@@ -70,7 +77,10 @@ public class Review implements Serializable{
 	}
 	
 	
-
+	
+	
+	
+	
 	
 	
 	

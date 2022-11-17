@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" th:href="@{'/css/board.css'}">
+<script type="text/javascript" th:href="@{'/js/board.js"></script>
 </head>
 <body>
 	<div th:fragment="writeView">
@@ -40,7 +41,7 @@
 			  <!-- <input type="text" name="cosId" th:field="*{cosId}"> --> 
 			  작성자: <input type="text" name="name" th:field="*{name}" placeholder="이름" class="name"> <br>
 			  <div th:errors="*{name}" class="error-messages"></div> 
-			  구매날짜: <input type="date" name="r_date" th:field="*{r_date}" class="date"> <br>
+			  구매날짜: <input type="date" value="yyyy/MM/dd" name="r_date" th:field="*{r_date}" class="date"> <br>
 			  <div th:errors="*{r_date}" class="error-messages"></div>
 			 
 			  	<textarea name="content" th:field="*{content}"
