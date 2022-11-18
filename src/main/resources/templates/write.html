@@ -42,7 +42,9 @@
 			  <!-- <input type="text" name="cosId" th:field="*{cosId}"> --> 
 			  작성자: <input type="text" name="name" th:field="*{name}" placeholder="이름" class="name"> <br>
 			  <div th:errors="*{name}" class="error-messages"></div> 
-			  구매날짜: <input type="date" value="yyyy/MM/dd" name="r_date" th:field="*{r_date}" class="date"> <br>
+			  <!-- <%request.setAttribute("dateType2", "2022-01-01");%> -->
+			  
+			  구매날짜: <input type="date" value="2022-01-01" name="r_date" th:field="*{r_date}" class="date"> <br>
 			  <div th:errors="*{r_date}" class="error-messages"></div>
 			 
 			  	<textarea name="content" th:field="*{content}"
